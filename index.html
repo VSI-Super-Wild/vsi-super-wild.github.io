@@ -125,6 +125,14 @@
       line-height: 1.75;
     }
 
+    .venue {
+      margin: 0.7rem auto 0;
+      color: #0f172a;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
     .link-row {
       margin: 1.1rem 0 1.25rem;
       display: flex;
@@ -141,7 +149,7 @@
       min-height: 2.35rem;
       padding: 0.5rem 1rem;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 700;
       border: 0;
       line-height: 1;
       text-decoration: none;
@@ -175,7 +183,7 @@
     .is-hf { background: #f59e0b; color: #111827; }
 
     .hero-teaser {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 0.7rem 0.8rem;
       border: 1px solid rgba(15, 118, 110, 0.14);
@@ -208,7 +216,8 @@
     }
 
     .section-kicker {
-      margin-bottom: 1.15rem;
+      max-width: 960px;
+      margin: 0 auto 1.15rem;
       color: #0f172a;
       font-size: 2rem;
       font-weight: 900;
@@ -221,7 +230,7 @@
       color: #334155;
       font-size: 1.05rem;
       line-height: 1.82;
-      text-align: justify;
+      text-align: left;
     }
 
     .lead.compact-lead {
@@ -229,11 +238,27 @@
       line-height: 1.8;
     }
 
+    .section-lead {
+      max-width: 960px;
+      margin: 0 auto 1.05rem;
+      color: #334155;
+      font-size: 1.02rem;
+      line-height: 1.78;
+      text-align: left;
+    }
+
+    .center-lead {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: left;
+    }
+
     .stats-grid {
+      max-width: 960px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 0.75rem;
-      margin-top: 1.1rem;
+      margin: 1.1rem auto 0;
     }
 
     .stat-card {
@@ -260,7 +285,8 @@
     }
 
     .figure-panel {
-      margin: 1.1rem 0;
+      max-width: 960px;
+      margin: 1.1rem auto;
     }
 
     .figure-panel img {
@@ -286,10 +312,11 @@
     }
 
     .task-grid {
+      max-width: 960px;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.8rem;
-      margin: 1.1rem 0;
+      margin: 1.1rem auto;
     }
 
     .task-card {
@@ -343,20 +370,39 @@
     }
 
     .horizon-results .figure-panel {
+      max-width: none;
+      display: flex;
+      flex-direction: column;
       height: 100%;
       margin: 0;
+      min-height: 0;
+    }
+
+    .diagnostic-grid .figure-panel {
+      max-width: none;
     }
 
     .horizon-results .figure-panel img {
-      height: 100%;
+      flex: 1 1 auto;
+      height: 0;
+      min-height: 0;
       object-fit: contain;
     }
 
+    .horizon-results .figure-caption {
+      flex: 0 0 auto;
+    }
+
     .note-grid {
+      max-width: 960px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
-      margin-top: 1rem;
+      margin: 1rem auto 0;
+    }
+
+    .note-grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .note {
@@ -372,6 +418,47 @@
       display: block;
       margin-bottom: 0.25rem;
       color: #102a43;
+    }
+
+    .single-note {
+      max-width: 960px;
+      margin: 1rem auto 0;
+    }
+
+    .takeaway-card {
+      max-width: 960px;
+      margin: 1.15rem auto 0;
+      padding: 1rem 1.1rem;
+      border: 1px solid #bee3da;
+      border-radius: 10px;
+      background: #ecfdf7;
+      color: #134e4a;
+      font-weight: 900;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .diagnostic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.2rem auto 0;
+      align-items: start;
+    }
+
+    .diagnostic-grid .figure-panel {
+      margin: 0;
+    }
+
+    .diagnostic-wide {
+      grid-column: 1 / -1;
+    }
+
+    .performance-section .note-grid,
+    .performance-section .single-note,
+    .diagnostic-section .task-grid,
+    .diagnostic-section .diagnostic-grid {
+      max-width: none;
     }
 
     .result-table {
@@ -421,7 +508,8 @@
     .second { color: #0f766e; font-weight: 900; text-decoration: underline; }
 
     .subsection-title {
-      margin: 1.5rem 0 0.85rem;
+      max-width: 960px;
+      margin: 1.5rem auto 0.85rem;
       color: var(--brand);
       font-size: 1.35rem;
       font-weight: 900;
@@ -457,8 +545,13 @@
       .split-grid,
       .note-grid,
       .two-figures,
-      .horizon-results {
+      .horizon-results,
+      .diagnostic-grid {
         grid-template-columns: 1fr;
+      }
+
+      .diagnostic-wide {
+        grid-column: auto;
       }
 
       .result-table {
@@ -493,12 +586,10 @@
       </a>
       <div class="nav-links">
         <a href="#abstract">Abstract</a>
-        <a href="#benchmark">Benchmark</a>
-        <a href="#tasks">Tasks</a>
-        <a href="#construction">Data</a>
-        <a href="#results">Results</a>
-        <a href="#key-findings">Findings</a>
-        <a href="#failure-modes">Failure Modes</a>
+        <a href="#benchmark-design">Design</a>
+        <a href="#benchmark-dataset">Dataset</a>
+        <a href="#benchmark-performance">Performance</a>
+        <a href="#diagnostic">Diagnostic</a>
         <a href="#conclusion">Conclusion</a>
         <a href="#citation">BibTeX</a>
       </div>
@@ -509,12 +600,13 @@
     <div class="hero-inner">
       <h1 class="publication-title">Towards Spatial Supersensing in the Wild</h1>
       <p class="authors">
-        Tianjun Gu*, Tianyu Xin*, Kuan Zhang*, Bowen Yang, Kok-Chung Chua, Peize Li, Xinran Zhang, Yupeng Chen, Qiyue Zhao, Qinlei Xie,<br>
-        Jianhang Liu, Yucheng Lu, Yinan Han, Marco Pavone, Yiming Li†<br>
+        <a href="mailto:Grady10086@gmail.com">Tianjun Gu*</a>, <a href="mailto:tianyuxin1024@gmail.com">Tianyu Xin*</a>, Kuan Zhang*, Bowen Yang, Kok-Chung Chua, Peize Li, Xinran Zhang, Yupeng Chen, Qiyue Zhao, Qinlei Xie,<br>
+        Jianhang Liu, Yucheng Lu, Yinan Han, Marco Pavone, <a href="mailto:yimingli9702@gmail.com">Yiming Li†</a><br>
         <strong>THU, NVIDIA, Stanford University, KCL, TU Darmstadt</strong>
       </p>
+      <div class="venue">ECCV 2026</div>
       <div class="link-row">
-        <a class="button is-arxiv" href="#">
+        <a class="button is-arxiv" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
           <span class="icon" aria-hidden="true">
             <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"/>
@@ -522,7 +614,7 @@
           </span>
           <span>Paper</span>
         </a>
-        <a class="button is-github" href="#">
+        <a class="button is-github" href="https://github.com/THUSI-Lab/VSI-Super-Wild" target="_blank" rel="noopener noreferrer">
           <span class="icon" aria-hidden="true">
             <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 .297a12 12 0 0 0-3.79 23.4c.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0 1 12 6.844c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.479 5.921.43.371.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12 12 0 0 0 12 .297z"/>
@@ -537,6 +629,7 @@
       </div>
       <div class="hero-teaser">
         <img src="./VSI_Super_Wild_files/source_figures/teaser.png" alt="VSI-SUPER-WILD teaser">
+        <p class="figure-caption">We advance spatial supersensing beyond household object modeling to world modeling across three anchors: agent, object, environment, using long-form, in-the-wild videos from diverse real-world scenes.</p>
       </div>
     </div>
   </section>
@@ -547,87 +640,100 @@
       <p class="lead compact-lead">
         Humans can efficiently parse continuous sensory streams, from hours to years, scaffolding an internal world model that grounds spatial reasoning and prediction. To mimic this capacity, <a href="https://arxiv.org/abs/2511.04670" target="_blank" rel="noopener noreferrer">spatial supersensing</a> challenges multimodal models to move beyond linguistic understanding toward true world modeling. However, their benchmark relies on synthetic long videos formed by concatenating random short clips and is mostly limited to household scenes, leaving real-world continuity and diversity underexplored. To address the gap, we introduce <strong>VSI-Super-Wild</strong>, a large-scale spatial supersensing benchmark built from genuinely long, in-the-wild videos across diverse scenarios. Inspired by cognitive studies on how humans structure experience, we systematically probe the full triad of world state: the agent (observer), objects (scene items), and the environment (places and global layout). In total, <strong>VSI-Super-Wild</strong> comprises 442 real-world long-form videos across 8 scene categories and 6,980 human-verified question-answer pairs. Evaluating multimodal models on <strong>VSI-Super-Wild</strong> exposes a fundamental disconnect: despite advances in static image understanding, models consistently fail at tasks that require coherent world-state tracking over time. We characterize how performance degrades with world-state complexity and temporal horizon, and diagnose four failure modes: spatial collapse, semantic shortcuts, insufficient update, and instance confusion.
       </p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="benchmark-design">
+    <div class="container-wide">
+      <div class="section-kicker">Benchmark Design</div>
+      <p class="section-lead center-lead">
+        To bridge the gap between existing benchmarks and real-world spatial supersensing, <strong>VSI-Super-Wild</strong> is constructed from genuinely long-form, in-the-wild videos and designed to probe the agent-object-environment triad of world state.
+      </p>
+
+      <h3 class="subsection-title">Motivation</h3>
+      <p class="section-lead">
+        Existing spatial supersensing benchmarks mark an important step toward testing implicit world modeling, but they leave real-world continuity and broader world-state coverage underexplored. VSI-SUPER predominantly focuses on household scenes, synthesizes long videos by concatenating short clips with in-frame editing, and emphasizes object-centric probing. <strong>VSI-Super-Wild</strong> addresses these gaps by moving spatial supersensing toward diverse in-the-wild scenes and broader world-state probing.
+      </p>
       <div class="figure-panel unframed">
         <img src="./VSI_Super_Wild_files/source_figures/motivation.png" alt="Motivation for VSI-Super-Wild">
-        <p class="figure-caption">Motivation: VSI-Super-Wild moves spatial supersensing from synthetic clip concatenations toward genuinely long, in-the-wild video streams that require coherent tracking of agents, objects, and environments.</p>
+        <p class="figure-caption">VSI-Super-Wild advances spatial supersensing beyond synthetic indoor and object-centric settings toward natural long-video streams and multi-anchor world-state probing.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="benchmark">
-    <div class="container-wide">
-      <div class="section-kicker">Benchmark Highlights</div>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number">442</div><div class="stat-label">View-Level Videos</div></div>
-        <div class="stat-card"><div class="stat-number">6,980</div><div class="stat-label">Human-Verified Q&amp;As</div></div>
-        <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Scene Categories</div></div>
-        <div class="stat-card"><div class="stat-number">38.62m</div><div class="stat-label">Average Duration</div></div>
-        <div class="stat-card"><div class="stat-number">261.08m</div><div class="stat-label">Maximum Duration</div></div>
+      <h3 class="subsection-title">Task Suite</h3>
+      <p class="section-lead">
+        Inspired by cognitive studies on how humans construct and maintain internal representations, <strong>VSI-Super-Wild</strong> organizes world-state probing around three complementary anchors: the <strong class="agent">agent</strong>, <strong class="object">objects</strong>, and the <strong class="environment">environment</strong>. We define four cognitively grounded tasks that test whether MLLMs can construct and maintain world states across long, unconstrained video streams.
+      </p>
+      <div class="figure-panel unframed">
+        <img src="./VSI_Super_Wild_files/source_figures/task_illustration.png" alt="Task suite illustration">
+        <p class="figure-caption">Task Suite of VSI-Super-Wild. The benchmark probes the agent-object-environment triad through 4 tasks (VMR, VPO, VOO, and VOC).</p>
       </div>
-      <div class="note-grid">
-        <div class="note"><strong>Task Distribution</strong>VMR 1,215 pairs, VPO 1,302 pairs, VOO 3,350 pairs, and VOC 1,113 pairs.</div>
-        <div class="note"><strong>Real-World Diversity</strong>Videos span unconstrained scenes including retail, street view, transportation hubs, residential, industry, medical, office and education, and culture and entertainment.</div>
-        <div class="note"><strong>Broader World-State Probing</strong>The benchmark explicitly tests agent, object, and environment anchors rather than staying object-centric.</div>
-      </div>
-      <div class="figure-panel">
-        <img src="./VSI_Super_Wild_files/source_figures/benchstatistics.png" alt="Benchmark statistics">
-        <p class="figure-caption">Statistics from the updated paper: category distribution, video duration, object distribution, and task distribution.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="tasks">
-    <div class="container-wide">
-      <div class="section-kicker">Task Suite</div>
       <div class="task-grid">
         <div class="task-card">
           <h3 class="agent">VMR: Motion Orientation Recall</h3>
-          <p>Infers camera motion orientation relative to viewing direction at a queried moment, probing agent-centric latent state recall.</p>
+          <p>Agent-centric. The model infers camera motion orientation relative to viewing direction at a queried moment, requiring latent motion-state recall beyond single-frame matching.</p>
         </div>
         <div class="task-card">
           <h3 class="environment">VPO: Place Temporal Ordering</h3>
-          <p>Orders yaw-rotated place frames from long panoramic videos, testing heading-invariant place memory across the environment.</p>
+          <p>Environment-centric. The model orders place frames under yaw-rotated viewpoints, testing heading-invariant place representations.</p>
         </div>
         <div class="task-card">
           <h3 class="object">VOO: Object Temporal Ordering</h3>
-          <p>Orders queried objects by first or last occurrence, requiring self-updating object-state tracking through continuous streams.</p>
+          <p>Object-centric. The model orders queried objects by first or last occurrence, testing self-updating object-state modeling.</p>
         </div>
         <div class="task-card">
           <h3 class="object">VOC: Continuous Object Counting</h3>
-          <p>Predicts unique-instance counts from long video, testing whether models can maintain a numerical object world state.</p>
+          <p>Object-centric with long-horizon updates. The model predicts unique-instance counts from a full video stream, requiring a consistent latent count state over time.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="benchmark-dataset">
+    <div class="container-wide">
+      <div class="section-kicker">Benchmark Dataset</div>
+      <p class="section-lead center-lead">
+        <strong>VSI-Super-Wild</strong> is built through a scalable, semi-automatic pipeline with human-in-the-loop verification, resulting in long-form in-the-wild videos and high-quality Q&amp;A pairs across diverse scene categories.
+      </p>
+
+      <h3 class="subsection-title">Construction</h3>
+      <p class="section-lead">
+        The semi-automatic data construction pipeline has three stages shown below. We crawl and filter in-the-wild panoramic YouTube videos, project panoramas into perspective views, generate temporal metadata from object proposals, YOLO-World filtering, and SAM3 instance masks, and generate spatial metadata using Depth-Anything-3 camera poses. Rule-based Q&amp;A synthesis is then verified by human experts, with rollback to refine metadata or Q&amp;A when necessary.
+      </p>
+      <div class="figure-panel unframed">
+        <img src="./VSI_Super_Wild_files/source_figures/data_construction.png" alt="Data construction pipeline">
+        <p class="figure-caption">Data construction pipeline of VSI-Super-Wild. The benchmark uses a semi-automatic pipeline including video collection, metadata generation, and Q&amp;A generation, with human-in-the-loop verification.</p>
+      </div>
+
+      <h3 class="subsection-title">Statistics</h3>
+      <p class="section-lead">
+        The intrinsic value of <strong>VSI-Super-Wild</strong> lies in the empirical complexity, multi-dimensional distribution, and cognitive difficulty of the video data and tasks. The benchmark contains 442 high-quality view-level videos, totaling 284.52 hours of egocentric experience in the wild, and 6,980 human-verified Q&amp;A pairs across four tasks.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">442</div><div class="stat-label">View-Level Videos</div></div>
+        <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Scene Categories</div></div>
+        <div class="stat-card"><div class="stat-number">38.62m</div><div class="stat-label">Average Duration</div></div>
+        <div class="stat-card"><div class="stat-number">261.08m</div><div class="stat-label">Maximum Duration</div></div>
+        <div class="stat-card"><div class="stat-number">6,980</div><div class="stat-label">Human-Verified Q&amp;As</div></div>
       </div>
       <div class="figure-panel">
-        <img src="./VSI_Super_Wild_files/source_figures/task_illustration.png" alt="Task illustration">
-        <p class="figure-caption">Overview of VSI-Super-Wild tasks and the expanded world-state anchors.</p>
+        <img src="./VSI_Super_Wild_files/source_figures/benchstatistics.png" alt="Benchmark statistics">
+        <p class="figure-caption">Statistics of VSI-Super-Wild: scene-category distribution, video number share per category, object count per scene category, and distribution of single-video duration and Q&amp;A tasks.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="construction">
-    <div class="container-wide">
-      <div class="section-kicker">Data Construction</div>
-      <div class="split-grid">
-        <div>
-          <p class="lead">
-            The pipeline starts from in-the-wild panoramic YouTube videos across culture and entertainment, industry, medical, office and education, residential space, retail space, street view, and transportation hubs. Panoramas are projected into four orthogonal perspective views, then enriched with temporal metadata from object proposals, YOLO-World filtering, and SAM3 instance masks, plus spatial metadata from Depth-Anything-3 camera poses.
-          </p>
-          <div class="note-grid">
-            <div class="note"><strong>Video Collection</strong>Egocentric, dynamic, handheld recordings are filtered from broad real-world scenes.</div>
-            <div class="note"><strong>Metadata Generation</strong>Temporal object tracks and camera poses support task synthesis.</div>
-            <div class="note"><strong>QA Generation</strong>Rule-based Q&amp;A is verified by humans, with rollback when metadata needs refinement.</div>
-          </div>
-        </div>
-        <div class="figure-panel">
-          <img src="./VSI_Super_Wild_files/source_figures/data_construction.png" alt="Data construction pipeline">
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="section section-alt" id="benchmark-performance">
+    <div class="container-wide performance-section">
+      <div class="section-kicker">Benchmark Performance</div>
+      <p class="section-lead center-lead">
+        Across 13 mainstream MLLMs, current models still struggle to robustly construct, maintain, and query broader spatiotemporal world states under improved real-world diversity.
+      </p>
 
-  <section class="section" id="results">
-    <div class="container-wide">
-      <div class="section-kicker">Results</div>
+      <h3 class="subsection-title">Overall Performance</h3>
+      <p class="section-lead">
+        Current MLLMs remain far from robust spatial supersensing in the wild. Gemini-3.1-Pro achieves the strongest overall score of 44.36, while GPT-5.4 reaches 34.52 and the strongest open-source model, Cambrian-S-7B, reaches 34.22.
+      </p>
+      <div class="note single-note"><strong>Key Observation</strong>Current MLLMs still struggle substantially with spatial supersensing in the wild, indicating that even strong models cannot yet robustly construct, maintain, and query broader spatiotemporal world states under real-world diversity.</div>
       <div class="table-container">
         <table class="result-table">
           <thead>
@@ -661,7 +767,12 @@
           </tbody>
         </table>
       </div>
-      <h3 class="subsection-title">Temporal Horizon Analysis</h3>
+
+      <h3 class="subsection-title">Two Key Challenges</h3>
+      <div class="note-grid two">
+        <div class="note"><strong>World-State Complexity</strong>Object-state probing is often more tractable than agent- and environment-state modeling. Cambrian-S-7B achieves 40.36 on VOO, compared with 26.91 on VMR and 25.58 on VPO.</div>
+        <div class="note"><strong>Longer Temporal Horizons</strong>Longer videos are generally more challenging for spatial supersensing. Average performance drops from 35.0 in the 0-10 minute bin to 26.3 in the 120+ minute bin.</div>
+      </div>
       <div class="horizon-results">
         <div class="table-container">
           <table class="result-table">
@@ -698,74 +809,55 @@
         </div>
         <div class="figure-panel">
           <img src="./VSI_Super_Wild_files/source_figures/duration_bucket_comparison.png" alt="Duration bucket comparison">
-          <p class="figure-caption">Per-task scores of representative models across video duration bins.</p>
+          <p class="figure-caption">Performance across temporal horizons on VSI-Super-Wild. The table reports overall scores grouped by video duration, and the line chart visualizes per-task scores of representative models.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" id="key-findings">
-    <div class="container-wide">
-      <div class="section-kicker">Key Findings</div>
-      <div class="note-grid">
-        <div class="note"><strong>Overall Performance</strong>Current MLLMs still struggle with spatial supersensing in the wild. Gemini-3.1-Pro leads with 44.36 overall, while GPT-5.4 and the strongest open-source model, Cambrian-S-7B, reach 34.52 and 34.22.</div>
-        <div class="note"><strong>Challenge: World State Complexity</strong>Object-state probing is often more tractable than agent- and environment-state modeling. Open-source models score much higher on VOO than on VMR or VPO, exposing a gap in 3D spatial cognition.</div>
-        <div class="note"><strong>Challenge: Longer Temporal Horizons</strong>Average performance drops from 35.0 in the 0-10 minute bin to 26.3 in the 120+ minute bin, showing that maintaining coherent world states becomes harder as observation time grows.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="failure-modes">
-    <div class="container-wide">
-      <div class="section-kicker">Failure Modes</div>
+  <section class="section" id="diagnostic">
+    <div class="container-wide diagnostic-section">
+      <div class="section-kicker">Diagnostic Result</div>
+      <p class="section-lead center-lead">
+        Qualitative and quantitative analyses reveal four recurring failure modes that hinder coherent representations of the agent, objects, and environment: <strong>spatial collapse</strong>, <strong>semantic shortcuts</strong>, <strong>insufficient update</strong>, and <strong>instance confusion</strong>.
+      </p>
       <div class="task-grid">
-        <div class="note"><strong>Spatial Collapse</strong>Models fall back to view-specific 2D matching under viewpoint change.</div>
-        <div class="note"><strong>Semantic Shortcut</strong>Frame-level semantics can replace true spatiotemporal motion reasoning.</div>
-        <div class="note"><strong>Insufficient Update</strong>Last-occurrence ordering exposes weak state updates as later evidence arrives.</div>
-        <div class="note"><strong>Instance Confusion</strong>Motion blur, partial occlusion, and viewpoint change make object identity tracking unstable in the wild.</div>
+        <div class="note"><strong>Spatial Collapse</strong>Models fail to maintain a coherent spatial world state across views and instead fall back to view-specific 2D frame matching rather than implicit 3D world modeling.</div>
+        <div class="note"><strong>Semantic Shortcut</strong>Models exploit semantic shortcuts instead of inferring motion from spatiotemporal evidence and updating an agent-centric world state.</div>
+        <div class="note"><strong>Insufficient Update</strong>Models can preserve early world states relatively well, but struggle to sufficiently update world states as new evidence arrives.</div>
+        <div class="note"><strong>Instance Confusion</strong>In-the-wild visual complexity remains challenging because models need robust object identity tracking under motion blur, partial occlusion, and viewpoint change.</div>
       </div>
-      <div class="figure-panel">
-        <img src="./VSI_Super_Wild_files/source_figures/error_analysis_si.png" alt="Semantic shortcut and instance confusion analysis">
-        <p class="figure-caption">Qualitative analysis of semantic shortcut and instance confusion in in-the-wild videos.</p>
-      </div>
-      <div class="two-figures">
+      <div class="diagnostic-grid">
+        <div class="figure-panel diagnostic-wide">
+          <img src="./VSI_Super_Wild_files/source_figures/error_analysis_si.png" alt="Semantic shortcut and instance confusion analysis">
+          <p class="figure-caption">Case studies for semantic shortcut and instance confusion in in-the-wild videos.</p>
+        </div>
         <div class="figure-panel">
           <img src="./VSI_Super_Wild_files/source_figures/spatial_collapse.png" alt="Spatial collapse analysis">
-          <p class="figure-caption">Spatial collapse: accuracy drops after viewpoint changes, although the physical place is unchanged.</p>
+          <p class="figure-caption">Spatial collapse diagnostic.</p>
         </div>
         <div class="figure-panel">
           <img src="./VSI_Super_Wild_files/source_figures/updating.png" alt="Insufficient update analysis">
-          <p class="figure-caption">Insufficient update: last-occurrence ordering is much harder than first-occurrence ordering.</p>
+          <p class="figure-caption">Insufficient update diagnostic.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" id="shuffle">
-    <div class="container-wide">
-      <div class="section-kicker">Shuffle24</div>
-      <p class="lead">
-        Under Shuffle24, each multiple-choice question is evaluated across all 24 option permutations. VSI-Super-Wild shows lower Top-K and Pass@K, higher option-order bias, and a larger best-vs-worst permutation gap than VSI-SUPER, confirming that the in-the-wild long-video setting is more difficult and more sensitive to answer ordering artifacts.
-      </p>
-      <div class="figure-panel">
-        <img src="./VSI_Super_Wild_files/source_figures/shuffle.png" alt="Shuffle24 comparison">
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="conclusion">
+  <section class="section section-alt" id="conclusion">
     <div class="container-text">
       <div class="section-kicker">Conclusion</div>
       <p class="lead">
-        VSI-Super-Wild evaluates whether MLLMs can conduct human-like implicit world modeling under real-world in-the-wild streams. Compared with previous supersensing benchmarks, it advances evaluation along two axes: real-world diversity and broader world-state probing. The updated benchmark contains 442 unconstrained online videos across 8 scene categories, with videos lasting over 4 hours at maximum, and 6,980 human-verified Q&amp;As spanning object-, agent-, and environment-centric tasks.
+        <strong>VSI-Super-Wild</strong> evaluates whether MLLMs can conduct human-like implicit world modeling under real-world in-the-wild streams. Compared with existing supersensing benchmarks, it advances evaluation along two axes: real-world diversity and broader world-state probing.
       </p>
       <p class="lead">
-        Across 13 mainstream MLLMs, current models still fall substantially short of robust spatial supersensing in the wild. Models are relatively more reliable on object-centric state queries, but struggle with agent and environment components that demand stronger 3D spatial cognition. Continuous counting remains especially difficult because it requires precise numeric answers under continual state updates. Longer temporal horizons further degrade performance, and the recurring failure modes show that current MLLMs still over-rely on frame-level semantics instead of maintaining stable, queryable spatiotemporal world representations.
+        Across 13 mainstream MLLMs, current models still fall substantially short of robust spatial supersensing in the wild. Models are relatively more reliable on object-centric state queries, yet struggle on agent- and environment-centric components that require stronger 3D spatial cognition. Performance also degrades as the temporal horizon increases, and diagnostic analyses expose spatial collapse, semantic shortcuts, insufficient update, and instance confusion.
       </p>
+      <div class="takeaway-card">Reliable spatial supersensing in the wild requires models that bind objects, agents, and environments into a unified, coherent, and continuously updated world model.</div>
     </div>
   </section>
 
-  <section class="section section-alt" id="citation">
+  <section class="section" id="citation">
     <div class="container-text">
       <div class="section-kicker">Citation</div>
       <pre><code>@article{VSI_Super_Wild,
@@ -777,8 +869,5 @@
     </div>
   </section>
 
-  <footer class="footer">
-    VSI-SUPER-WILD Project Page · Updated from <code>main_cvpr.tex</code> and source figures.
-  </footer>
 </body>
 </html>
